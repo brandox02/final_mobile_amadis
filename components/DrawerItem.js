@@ -10,7 +10,7 @@ class DrawerItem extends React.Component {
     const { title, focused } = this.props;
 
     switch (title) {
-      case 'Home':
+      case 'Multas Registradas':
         return (
           <Icon
             name="app2x"
@@ -20,7 +20,7 @@ class DrawerItem extends React.Component {
             style={{ opacity: 0.5 }}
           />
         );
-      case 'Components':
+      case 'Mapa de Multas':
         return (
           <Icon
             name="atom2x"
@@ -30,7 +30,7 @@ class DrawerItem extends React.Component {
             style={{ opacity: 0.5 }}
           />
         );
-      case 'Articles':
+      case 'Tipos de Multas':
         return (
           <Icon
             name="paper"
@@ -40,7 +40,7 @@ class DrawerItem extends React.Component {
             style={{ opacity: 0.5 }}
           />
         );
-      case 'Profile':
+      case 'Consultas':
         return (
           <Icon
             name="profile-circle"
@@ -50,7 +50,7 @@ class DrawerItem extends React.Component {
             style={{ opacity: 0.5 }}
           />
         );
-      case 'Account':
+      case 'Registrarme':
         return (
           <Icon
             name="badge2x"
@@ -90,6 +90,16 @@ class DrawerItem extends React.Component {
           />
         );
       case 'LOGOUT':
+        return (
+          <Icon
+            name="share"
+            family="NowExtra"
+            size={18}
+            style={{ borderColor: 'rgba(0,0,0,0.5)', opacity: 0.5 }}
+            color={focused ? nowTheme.COLORS.PRIMARY : 'black'}
+          />
+        );
+      case 'Aplicar Multa':
         return (
           <Icon
             name="share"

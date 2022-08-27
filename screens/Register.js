@@ -5,7 +5,7 @@ import {
   Dimensions,
   StatusBar,
   TouchableWithoutFeedback,
-  Keyboard
+  Keyboard,
 } from 'react-native';
 import { Block, Checkbox, Text, Button as GaButton, theme } from 'galio-framework';
 
@@ -36,12 +36,12 @@ class Register extends React.Component {
                       <Text
                         style={{
                           fontFamily: 'montserrat-regular',
-                          textAlign: 'center'
+                          textAlign: 'center',
                         }}
                         color="#333"
                         size={24}
                       >
-                        Register
+                        Registrarse
                       </Text>
                     </Block>
 
@@ -55,18 +55,6 @@ class Register extends React.Component {
                         iconColor={theme.COLORS.WHITE}
                         iconSize={theme.SIZES.BASE * 1.625}
                         color={nowTheme.COLORS.TWITTER}
-                        style={[styles.social, styles.shadow]}
-                      />
-
-                      <GaButton
-                        round
-                        onlyIcon
-                        shadowless
-                        icon="dribbble"
-                        iconFamily="Font-Awesome"
-                        iconColor={theme.COLORS.WHITE}
-                        iconSize={theme.SIZES.BASE * 1.625}
-                        color={nowTheme.COLORS.DRIBBBLE}
                         style={[styles.social, styles.shadow]}
                       />
                       <GaButton
@@ -86,7 +74,7 @@ class Register extends React.Component {
                     <Text
                       style={{
                         fontFamily: 'montserrat-regular',
-                        textAlign: 'center'
+                        textAlign: 'center',
                       }}
                       muted
                       size={16}
@@ -100,7 +88,7 @@ class Register extends React.Component {
                         <Block>
                           <Block width={width * 0.8} style={{ marginBottom: 5 }}>
                             <Input
-                              placeholder="First Name"
+                              placeholder="Primer Nombre"
                               style={styles.inputs}
                               iconContent={
                                 <Icon
@@ -115,7 +103,7 @@ class Register extends React.Component {
                           </Block>
                           <Block width={width * 0.8} style={{ marginBottom: 5 }}>
                             <Input
-                              placeholder="Last Name"
+                              placeholder="Segundo Nombre"
                               style={styles.inputs}
                               iconContent={
                                 <Icon
@@ -144,7 +132,7 @@ class Register extends React.Component {
                             />
                           </Block>
                           <Block
-                            style={{ marginVertical: theme.SIZES.BASE, marginLeft: 15}}
+                            style={{ marginVertical: theme.SIZES.BASE, marginLeft: 15 }}
                             row
                             width={width * 0.75}
                           >
@@ -152,14 +140,14 @@ class Register extends React.Component {
                               checkboxStyle={{
                                 borderWidth: 1,
                                 borderRadius: 2,
-                                borderColor: '#E3E3E3'
+                                borderColor: '#E3E3E3',
                               }}
                               color={nowTheme.COLORS.PRIMARY}
                               labelStyle={{
                                 color: nowTheme.COLORS.HEADER,
-                                fontFamily: 'montserrat-regular'
+                                fontFamily: 'montserrat-regular',
                               }}
-                              label="I agree to the terms and conditions."
+                              label="Acepto los terminos y condiciones."
                             />
                           </Block>
                         </Block>
@@ -170,7 +158,7 @@ class Register extends React.Component {
                               size={14}
                               color={nowTheme.COLORS.WHITE}
                             >
-                              Get Started
+                              Registrarme
                             </Text>
                           </Button>
                         </Block>
@@ -192,11 +180,11 @@ const styles = StyleSheet.create({
     width: width,
     height: height,
     padding: 0,
-    zIndex: 1
+    zIndex: 1,
   },
   imageBackground: {
     width: width,
-    height: height
+    height: height,
   },
   registerContainer: {
     marginTop: 55,
@@ -207,15 +195,15 @@ const styles = StyleSheet.create({
     shadowColor: nowTheme.COLORS.BLACK,
     shadowOffset: {
       width: 0,
-      height: 4
+      height: 4,
     },
     shadowRadius: 8,
     shadowOpacity: 0.1,
     elevation: 1,
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   socialConnect: {
-    backgroundColor: nowTheme.COLORS.WHITE
+    backgroundColor: nowTheme.COLORS.WHITE,
     // borderBottomWidth: StyleSheet.hairlineWidth,
     // borderColor: "rgba(136, 152, 170, 0.3)"
   },
@@ -226,43 +214,43 @@ const styles = StyleSheet.create({
     shadowColor: nowTheme.COLORS.BLACK,
     shadowOffset: {
       width: 0,
-      height: 4
+      height: 4,
     },
     shadowRadius: 8,
     shadowOpacity: 0.1,
-    elevation: 1
+    elevation: 1,
   },
   socialTextButtons: {
     color: nowTheme.COLORS.PRIMARY,
     fontWeight: '800',
-    fontSize: 14
+    fontSize: 14,
   },
   inputIcons: {
     marginRight: 12,
-    color: nowTheme.COLORS.ICON_INPUT
+    color: nowTheme.COLORS.ICON_INPUT,
   },
   inputs: {
     borderWidth: 1,
     borderColor: '#E3E3E3',
-    borderRadius: 21.5
+    borderRadius: 21.5,
   },
   passwordCheck: {
     paddingLeft: 2,
     paddingTop: 6,
-    paddingBottom: 15
+    paddingBottom: 15,
   },
   createButton: {
     width: width * 0.5,
     marginTop: 25,
-    marginBottom: 40
+    marginBottom: 40,
   },
   social: {
     width: theme.SIZES.BASE * 3.5,
     height: theme.SIZES.BASE * 3.5,
     borderRadius: theme.SIZES.BASE * 1.75,
     justifyContent: 'center',
-    marginHorizontal: 10
-  }
+    marginHorizontal: 10,
+  },
 });
 
 export default Register;

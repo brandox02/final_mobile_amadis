@@ -1,4 +1,4 @@
-import { Animated, Dimensions, Easing } from 'react-native';
+import { Animated, AsyncStorage, Dimensions, Easing } from 'react-native';
 // header for screens
 import { Header, Icon } from '../components';
 import { nowTheme, tabs } from '../constants';
@@ -13,33 +13,57 @@ import Home from '../screens/Home';
 import Onboarding from '../screens/Onboarding';
 import Pro from '../screens/Pro';
 import Profile from '../screens/Profile';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Register from '../screens/Register';
 import SettingsScreen from '../screens/Settings';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
+import ApplyFine from '../screens/ApplyFine';
 
 const { width } = Dimensions.get('screen');
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-function ComponentsStack(props) {
+function ApplyFineStack(props) {
   return (
     <Stack.Navigator
-      initialRouteName="Components"
+      initialRouteName="Aplicar Multa"
       screenOptions={{
         mode: 'card',
         headerShown: 'screen',
       }}
     >
       <Stack.Screen
-        name="Components"
+        name="Aplicar Multa"
+        component={ApplyFine}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header transparent title="Aplicar Multa" navigation={navigation} scene={scene} />
+          ),
+          headerTransparent: true,
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function ComponentsStack(props) {
+  return (
+    <Stack.Navigator
+      initialRouteName="Mapa de Multas"
+      screenOptions={{
+        mode: 'card',
+        headerShown: 'screen',
+      }}
+    >
+      <Stack.Screen
+        name="Mapa de Multas"
         component={Components}
         options={{
           header: ({ navigation, scene }) => (
-            <Header title="Components" navigation={navigation} scene={scene} />
+            <Header title="Mapa de Multas" navigation={navigation} scene={scene} />
           ),
           backgroundColor: '#FFFFFF',
         }}
@@ -51,18 +75,18 @@ function ComponentsStack(props) {
 function ArticlesStack(props) {
   return (
     <Stack.Navigator
-      initialRouteName="Articles"
+      initialRouteName="Tipos de Multas"
       screenOptions={{
         mode: 'card',
         headerShown: 'screen',
       }}
     >
       <Stack.Screen
-        name="Articles"
+        name="Tipos de Multas"
         component={Articles}
         options={{
           header: ({ navigation, scene }) => (
-            <Header title="Articles" navigation={navigation} scene={scene} />
+            <Header title="Tipos de Multas" navigation={navigation} scene={scene} />
           ),
           backgroundColor: '#FFFFFF',
         }}
@@ -85,7 +109,7 @@ function AccountStack(props) {
         component={Register}
         options={{
           header: ({ navigation, scene }) => (
-            <Header transparent title="Create Account" navigation={navigation} scene={scene} />
+            <Header transparent title="Crear Cuenta" navigation={navigation} scene={scene} />
           ),
           headerTransparent: true,
         }}
@@ -97,18 +121,18 @@ function AccountStack(props) {
 function ProfileStack(props) {
   return (
     <Stack.Navigator
-      initialRouteName="Profile"
+      initialRouteName="Consultas"
       screenOptions={{
         mode: 'card',
         headerShown: 'screen',
       }}
     >
       <Stack.Screen
-        name="Profile"
+        name="Consultas"
         component={Profile}
         options={{
           header: ({ navigation, scene }) => (
-            <Header transparent white title="Profile" navigation={navigation} scene={scene} />
+            <Header transparent white title="Consultas" navigation={navigation} scene={scene} />
           ),
           cardStyle: { backgroundColor: '#FFFFFF' },
           headerTransparent: true,
@@ -137,11 +161,11 @@ function HomeStack(props) {
       }}
     >
       <Stack.Screen
-        name="Home"
+        name="Multas Registradas"
         component={Home}
         options={{
           header: ({ navigation, scene }) => (
-            <Header title="Home" search options navigation={navigation} scene={scene} />
+            <Header title="Multas Registradas" search options navigation={navigation} scene={scene} />
           ),
           cardStyle: { backgroundColor: '#FFFFFF' },
         }}
@@ -189,39 +213,53 @@ function AppStack(props) {
           fontWeight: 'normal',
         },
       }}
-      initialRouteName="Home"
+      initialRouteName="Multas Registradas"
     >
       <Drawer.Screen
-        name="Home"
+        name="Multas Registradas"
         component={HomeStack}
         options={{
           headerShown: false,
         }}
       />
       <Drawer.Screen
-        name="Components"
+        name="Mapa de Multas"
         component={ComponentsStack}
         options={{
           headerShown: false,
         }}
       />
       <Drawer.Screen
-        name="Articles"
+        name="Tipos de Multas"
         component={ArticlesStack}
         options={{
           headerShown: false,
         }}
       />
       <Drawer.Screen
-        name="Profile"
+        name="Consultas"
         component={ProfileStack}
         options={{
           headerShown: false,
         }}
       />
       <Drawer.Screen
-        name="Account"
+        name="Registrarme"
         component={AccountStack}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Drawer.Screen
+        name="Crear Cyebta"
+        component={ApplyFineStack}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Drawer.Screen
+        name="Aplicar Multa"
+        component={ApplyFineStack}
         options={{
           headerShown: false,
         }}
@@ -231,6 +269,14 @@ function AppStack(props) {
 }
 
 export default function OnboardingStack(props) {
+  useEffect(() => {
+    console.log('hello world');
+    const fines = AsyncStorage.getItem('fines');
+    if (!fines) {
+      AsyncStorage.setItem('fines', '[]');
+    }
+  }, []);
+
   return (
     <Stack.Navigator
       screenOptions={{
