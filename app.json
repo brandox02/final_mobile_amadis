@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Now UI React Native",
-    "slug": "now-ui-react-native",
+    "name": "Multas De Transito App",
+    "slug": "transit-fine",
     "privacy": "public",
     "platforms": [
       "ios",
@@ -24,6 +24,9 @@
     "ios": {
       "supportsTablet": true
     },
-    "description": "Now UI React Native, based on Now UI Design System. Coded by Creative Tim"
+    "description": "Multas De Transito App",
+    "android": {
+      "package": "com.brandox02.transitfine"
+    }
   }
 }
